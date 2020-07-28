@@ -16,9 +16,8 @@ import ejb.SignosVitalesFacade;
 import entidades.CitaMedica;
 import entidades.Paciente;
 
-
-@Named
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
+@Named
 @SessionScoped
 public class CitaMedicaBean implements Serializable  {
 	
