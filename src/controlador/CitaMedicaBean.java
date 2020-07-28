@@ -36,6 +36,9 @@ public class CitaMedicaBean implements Serializable  {
 	
 	private String cedula;
 	
+	private String cedulaC;
+	
+	private String cita;
 	private String sintomas;
 	
 	private String alergias;
@@ -48,6 +51,7 @@ public class CitaMedicaBean implements Serializable  {
 	
 	private List<CitaMedica> listaCitas;
 	
+	private CitaMedica citas;
 
 	public CitaMedicaBean() {
 		// TODO Auto-generated constructor stub
@@ -141,6 +145,31 @@ public class CitaMedicaBean implements Serializable  {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	 
+
+	public String getCedulaC() {
+		return cedulaC;
+	}
+
+	public void setCedulaC(String cedulaC) {
+		this.cedulaC = cedulaC;
+	}
+
+	public String getCita() {
+		return cita;
+	}
+
+	public void setCita(String cita) {
+		this.cita = cita;
+	}
+
+	public CitaMedica getCitas() {
+		return citas;
+	}
+
+	public void setCitas(CitaMedica citas) {
+		this.citas = citas;
+	}
 
 	public String addCita() {
 		Paciente paciente = ejbPacienteFacade.buscarPorCedula(this.cedula);
@@ -149,6 +178,11 @@ public class CitaMedicaBean implements Serializable  {
 		return null;
 	}
 	
+	
+	public String buscarCita() {
+		citas=ejbCitaMedicaFacade.buscarPorCitayCed(this.cedulaC, this.cita);
+		return null;
+	}
 	/*
 	public String addSignosVitales() {
 		CitaMedica citaMedica =  ejbCitaMedicaFacade.buscarPorCitayCed(cedula, cita)

@@ -16,6 +16,7 @@ import entidades.CitaMedica;
 import entidades.SignosVitales;
 
 
+
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
 @SessionScoped
