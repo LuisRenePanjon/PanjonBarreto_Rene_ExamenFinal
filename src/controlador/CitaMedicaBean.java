@@ -18,6 +18,7 @@ import entidades.Paciente;
 
 
 @Named
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @SessionScoped
 public class CitaMedicaBean implements Serializable  {
 	
