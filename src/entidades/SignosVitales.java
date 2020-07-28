@@ -29,14 +29,29 @@ public class SignosVitales implements Serializable {
 	
 	private String saturacion;
 	
-	@OneToOne
-	@JoinColumn
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "signosVitales")
 	private CitaMedica citaMedica;
 	
 	
 	public SignosVitales() {
 		super();
 	}
+	
+	
+
+
+	public SignosVitales(String presion, String frecuenciCardiaca, String frecuenciaRespiratoria, String temperatura,
+			String saturacion, CitaMedica citaMedica) {
+		super();
+		this.presion = presion;
+		this.frecuenciCardiaca = frecuenciCardiaca;
+		this.frecuenciaRespiratoria = frecuenciaRespiratoria;
+		this.temperatura = temperatura;
+		this.saturacion = saturacion;
+		this.citaMedica = citaMedica;
+	}
+
+
 
 
 	public int getCodigo() {

@@ -10,8 +10,9 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Paciente
  *
  */
-@Entity
 
+@NamedQuery(name = "buscarPorCedula", query ="SELECT p FROM  Paciente p WHERE  p.cedula = :cedula")
+@Entity
 public class Paciente implements Serializable {
 
 	

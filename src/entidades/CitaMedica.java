@@ -2,7 +2,6 @@ package entidades;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 
 import javax.persistence.*;
 
@@ -11,6 +10,8 @@ import javax.persistence.*;
  * Entity implementation class for Entity: CitaMedica
  *
  */
+
+@NamedQuery(name = "buscarPorCitayCed", query = "SELECT c FROM CitaMedica c WHERE c.paciente.cedula = :cedula AND c.codigo= :cita")
 @Entity
 
 public class CitaMedica implements Serializable {
@@ -24,7 +25,7 @@ public class CitaMedica implements Serializable {
 	
 	private Date hora;
 	
-	private Time fecha;
+	private String fecha;
 	
 	private String sintomas;
 	
@@ -37,7 +38,8 @@ public class CitaMedica implements Serializable {
 	private Paciente paciente;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "citaMedica")
+	@OneToOne
+	@JoinColumn
 	private SignosVitales signosVitales;
 	
 	public CitaMedica() {
@@ -45,6 +47,19 @@ public class CitaMedica implements Serializable {
 	}
 	
 	
+
+	public CitaMedica(Date hora, String fecha, String sintomas, String alergias, String enfermedadesPrevias,
+			Paciente paciente) {
+		super();
+		this.hora = hora;
+		this.fecha = fecha;
+		this.sintomas = sintomas;
+		this.alergias = alergias;
+		this.enfermedadesPrevias = enfermedadesPrevias;
+		this.paciente = paciente;
+	}
+
+
 
 	public SignosVitales getSignosVitales() {
 		return signosVitales;
@@ -74,13 +89,19 @@ public class CitaMedica implements Serializable {
 		this.hora = hora;
 	}
 
-	public Time getFecha() {
+	
+
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Time fecha) {
+
+
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+
+
 
 	public String getSintomas() {
 		return sintomas;
